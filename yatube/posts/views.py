@@ -8,5 +8,5 @@ def index(request):
 
 
 # Страница со списком мороженого
-def group_posts(request):
-    return HttpResponse('Публикации групп')
+def group_posts(request, slug):
+    return HttpResponse(f'Публикации групп: {slug}')
