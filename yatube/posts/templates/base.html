@@ -1,0 +1,21 @@
+<!-- templates/base.html -->
+<!DOCTYPE html> 
+<html lang="ru">          
+  <head>   
+    <meta charset="utf-8" />
+    <title>{% block title %}Default title{% endblock title %}</title>    
+  </head>
+  <body>       
+    <header>
+      {% include 'posts/includes/header.html' %}
+    </header>
+    <main>
+      {% block content %}
+        Контент не подвезли :(
+      {% endblock %}
+    </main>
+    <footer>
+      {% include 'posts/includes/footer.html' %} 
+    </footer>
+  </body>
+</html> 
