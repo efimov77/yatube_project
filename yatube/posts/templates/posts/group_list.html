@@ -1,3 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}{{title}}{% endblock title %}
-{% block content %}{{text}}{% endblock %} 
+{% block title %}Записи сообщества {{ group.title }}{% endblock title %}
+{% block content %}
+<div class="container">
+    <h1>{{ group.title }}</h1>
+    <p>{{ group.description }}</p>
+
+    <h2>Записи сообщества</h2>
+{% for post in posts %}
+  <ul>
+    <li>
+      Автор: {{ post.author.get_full_name }}
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:"d E Y" }}
+    </li>
+  </ul>
+  <p>{{ post.text }}</p>
+  {% if post.group %}  <!-- Проверяем, есть ли группа у поста -->
+  <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
+    {% endif %}   
+  {% if not forloop.last %}<hr>{% endif %}
+{% endfor %} 
+</div>
+{% endblock %} 
